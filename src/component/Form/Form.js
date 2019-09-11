@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import Validation from './Validation';
 
 class Form extends Component {
 
@@ -11,73 +12,61 @@ state={
     confirmPassword:""
 }
 
-//Need to use Arrow Function (Normal Function wont work)
-handleChange=(event, fieldname)=>{
-    this.setState({[fieldname]:event.target.value})
+handleChange=(event)=>{
+    this.setState({[event.target.name]:event.target.value})
+}
+handleSubmit=(event)=>{
+    event.preventDefault();
+    console.log(this.state)
 }
 
-// Written below multiple function into above one single function
-// handleChangeName=(event)=>{
-//     this.setState({name:event.target.value});
-// }
-// handleChangeEmail=(event)=>{
-//     this.setState({email:event.target.value});
-// }
-// handleChangePhone=(event)=>{
-//     this.setState({phone:event.target.value});
-// }
-// handleChangePassword=(event)=>{
-//     this.setState({password:event.target.value});
-// }
-// handleChangeConfirmPassword=(event)=>{
-//     this.setState({confirmPassword:event.target.value});
-// }
     render() {
         return (
-            <>  
+            <form onSubmit={this.handleSubmit}>  
             <div>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Name </label>
                 <input type="text" 
                 name="name" 
                 value={this.state.name} 
                 placeholder="Enter Your Full Name...."
-                onChange={(event)=>this.handleChange(event,"name")}/>
+                onChange={this.handleChange}/>
             </div>
             <div>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">Email </label>
                 <input type="email" 
                 name="email" 
                 value={this.state.email} 
                 placeholder="Enter Your Email...."
-                onChange={(event)=>this.handleChange(event,"email")}/>
+                onChange={this.handleChange}/>
             </div>
             <div>
-                <label htmlFor="phone">Phone Number</label>
+                <label htmlFor="phone">Phone Number </label>
                 <input type="tel" 
                 name="phone" 
                 value={this.state.phone} 
                 placeholder="Enter Your Phone Number...."
-                onChange={(event)=>this.handleChange(event,"phone")}/>
+                onChange={this.handleChange}/>
             </div>
             <div>
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Password </label>
                 <input type="text" 
                 name="password" 
                 value={this.state.password} 
                 placeholder="Enter Your New Password...."
-                onChange={(event)=>this.handleChange(event,"password")}/>
+                onChange={this.handleChange}/>
             </div>
             <div>
-                <label htmlFor="confirmPassword">Confirm Password</label>
+                <label htmlFor="confirmPassword">Confirm Password </label>
                 <input type="password" 
                 name="confirmPassword" 
                 value={this.state.confirmPassword} 
                 placeholder="Confirm Password...."
-                onChange={(event)=>this.handleChange(event,"confirmPassword")}/>
+                onChange={this.handleChange}/>
             </div>
-            {console.log(this.state)}
+            <button type="submit">Submit</button>
+            </form>
             
-            </>
+            
         )
     }
 }
