@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import Validation from './Validation';
 
 
+
 class Form extends Component {
 
 state={
@@ -11,6 +12,12 @@ state={
     phone:"",
     password:"",
     confirmPassword:"",
+    // Input Feedback
+    nameFeedback:"form-control",
+    emailFeedback:"form-control",
+    phoneFeedback:"form-control",
+    passwordFeedback:"form-control",
+    confirmPasswordFeedback:"form-control",
 }
 
 handleChange=(event)=>{
@@ -41,28 +48,28 @@ submitForm(formValues){
 
 highlightErrors(result){
     if(!result.name){
-        this.setState({errorName:"Enter Valid Name!"})
+        this.setState({nameFeedback:"form-control is-invalid"})
     }
     if(!result.email){
-        this.setState({errorEmail:"Enter Valid Email!"})
+        this.setState({emailFeedback:"form-control is-invalid"})
     }
     if(!result.phone){
-        this.setState({errorPhone:"Enter Valid Phone!"})
+        this.setState({phoneFeedback:"form-control is-invalid"})
     }
     if(!result.password){
-        this.setState({errorPassword:"Enter Valid Password!"})
+        this.setState({passwordFeedback:"form-control is-invalid"})
     }
     if(!result.confirmPassword){
-        this.setState({errorConfirmPassword:"Password Not Matched!"})
+        this.setState({confirmPasswordFeedback:"form-control is-invalid"})
     }
   }
 
 clearErrors(){
-        this.setState({errorName:""})
-        this.setState({errorEmail:""})
-        this.setState({errorPhone:""})
-        this.setState({errorPassword:""})
-        this.setState({errorConfirmPassword:""})
+        this.setState({nameFeedback:"form-control is-valid"})
+        this.setState({emailFeedback:"form-control is-valid"})
+        this.setState({phoneFeedback:"form-control is-valid"})
+        this.setState({passwordFeedback:"form-control is-valid"})
+        this.setState({confirmPasswordFeedback:"form-control is-valid"})
 
 }
 
@@ -115,47 +122,48 @@ function validateConfirmPassword(password, confirmPassword){
                 name="name" 
                 value={this.state.name} 
                 placeholder="Enter Your Full Name...."
-                onChange={this.handleChange}/>
-                <p>{this.state.errorName}</p>
-            </div>
+                onChange={this.handleChange}
+                className={this.state.nameFeedback} required/>
+            </div> <br/>
             <div>
                 <label htmlFor="email">Email </label> <br/>
                 <input type="email" 
                 name="email" 
                 value={this.state.email} 
                 placeholder="Enter Your Email...."
-                onChange={this.handleChange}/>
-                <p>{this.state.errorEmail}</p>
-            </div>
+                onChange={this.handleChange}
+                className={this.state.emailFeedback} required/>
+            </div> <br/>
             <div>
                 <label htmlFor="phone">Phone Number </label> <br/>
                 <input type="tel" 
                 name="phone" 
                 value={this.state.phone} 
                 placeholder="Enter Your Phone Number...."
-                onChange={this.handleChange}/>
-                <p>{this.state.errorPhone}</p>
-            </div>
+                onChange={this.handleChange}
+                className={this.state.phoneFeedback} required/>
+            </div> <br/>
             <div>
                 <label htmlFor="password">Password </label> <br/>
                 <input type="password" 
                 name="password" 
                 value={this.state.password} 
                 placeholder="New Password...."
-                onChange={this.handleChange}/>
-                <p>{this.state.errorPassword}</p>
-            </div>
+                onChange={this.handleChange}
+                className={this.state.passwordFeedback} required/>
+            </div> <br/>
             <div>
                 <label htmlFor="confirmPassword">Confirm Password </label> <br/>
                 <input type="password" 
                 name="confirmPassword" 
                 value={this.state.confirmPassword} 
                 placeholder="Confirm Password...."
-                onChange={this.handleChange}/>
-                <p>{this.state.errorConfirmPassword}</p>
+                onChange={this.handleChange}
+                className={this.state.confirmPasswordFeedback} required/>
             </div>  <br/>
-            <button type="submit">Submit</button> 
-            </form>    
+            <button type="submit" className="btn btn-primary">Submit</button> 
+            </form>  
+              
         )
     }
 }
