@@ -6,7 +6,7 @@ class App extends Component {
     render() {
         return (
             <div>
-            <h1>Registration Form</h1>
+            <h2 style={{textAlign:"center", marginTop:30}}>Registration Form</h2>
             <Form/>
             </div>
         )

@@ -52,6 +52,11 @@ submitForm(formValues){
     }
     console.log("Submition Done");
     console.log(formOutput);
+    this.setState({success:"Registered Successfully!"})
+    
+    setTimeout(() => {
+        this.setState({success:""})
+    }, 2000);
 }
 
 highlightErrors(result){
@@ -207,7 +212,9 @@ function validateConfirmPassword(password, confirmPassword){
                 id="confirmpassword"
                 className={this.state.confirmPasswordFeedback} required/>
             </div>  <br/>
-            <button type="submit" className="btn btn-primary">Submit</button> 
+            <div style={{textAlign:"center"}}>
+            <button type="submit" className="btn btn-primary">Register</button> </div>
+            <p style={{textAlign:"center", color:"green"}} className="alert">{this.state.success}</p>
             </form>  
               
         )
